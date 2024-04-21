@@ -8,6 +8,7 @@ export default function ShowScreen({route}) {
   return (
     <View>
       <Text>{blogPost.title}-{blogPost.id}</Text>
+      <Text>{blogPost.content}</Text>
     </View>
   );
 }
