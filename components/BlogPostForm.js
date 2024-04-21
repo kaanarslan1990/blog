@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-export default function BlogPostForm({onSubmit,initialValues}) {
+export default function BlogPostForm({ onSubmit, initialValues, isEditable }) {
   const [title, setTitle] = useState(initialValues?.title);
   const [content, setContent] = useState(initialValues?.content);
 
@@ -25,9 +25,16 @@ export default function BlogPostForm({onSubmit,initialValues}) {
         value={content}
         onChangeText={(text) => setContent(text)}
       />
-      <TouchableOpacity style={styles.buttonMain} onPress={() => onSubmit(title,content)}>
+      <TouchableOpacity
+        style={styles.buttonMain}
+        onPress={() => onSubmit(title, content)}
+      >
         <View style={styles.buttonView}>
-          <Text style={styles.buttonText}>Save</Text>
+          {isEditable ? (
+            <Text style={styles.buttonText}>Update</Text>
+          ) : (
+            <Text style={styles.buttonText}>Save</Text>
+          )}
         </View>
       </TouchableOpacity>
     </View>
@@ -51,18 +58,17 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   buttonMain: {
-    padding:30,
-
+    padding: 30,
   },
   buttonView: {
     backgroundColor: "green",
     padding: 10,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius:20,
+    borderRadius: 20,
   },
   buttonText: {
-    color:'white',
-    fontSize:20,
+    color: "white",
+    fontSize: 20,
   },
 });

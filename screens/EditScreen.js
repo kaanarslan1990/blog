@@ -7,7 +7,7 @@ export default function EditScreen({route}) {
   const {state} = useContext(Context);
   const blogPost = state.find((blogPost)=> blogPost.id === route.params.id)
   return (
-    <BlogPostForm initialValues={{title:blogPost.title,content:blogPost.content}}/>
+    <BlogPostForm isEditable={true} initialValues={{title:blogPost.title,content:blogPost.content}}/>
   )
 }
 
